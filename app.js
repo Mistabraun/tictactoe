@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let started = false
     let animating = false
     
-    let turn = 0 // 0 : "O",  1 : "X"
+    let turn = 2 //  1 : "X", 2 : "O",
 
     let occupied_grids = 0
     let grid = [
@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             if (is_position_empty(first)) { 
                 continue
             }
+            console.log("grids: ", first, grid[1][index], grid[2][index], ", index: ", index, "result", grid[1][index] == first & grid[2][index] == first)
             if (grid[1][index] == first & grid[2][index] == first) { 
                 return first
             }   
@@ -103,7 +104,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         
         }
         // console.log(grid)
-        // console.log(diagonally(), horizontally(), vertically())
+        console.log(diagonally(), horizontally(), vertically())
         return diagonally() | horizontally() | vertically()
 
     }
@@ -121,11 +122,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     function get_symbol(number) {
-        return number == 0 ? "O" : "X"
+        return number == 2 ? "O" : "X"
     }
 
     function flip_turn() {
-        turn = turn == 0 ? 1 : 0
+        turn = turn == 2 ? 1 : 2
         turn_dialog.innerHTML = `It's currently ${get_symbol(turn)} turn.`
     }
 
@@ -136,6 +137,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
        
          const winner = determine_winner()
          const draw = is_full()
+
+         console.log("result : ", winner, draw)
         
          if (!(winner || draw)) { 
              return
@@ -180,7 +183,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     function end_game() { 
         turn_dialog.style.display = "none"
         start_button.style.display = "block"
-        turn = 0
+        turn = 2
         occupied_grids = 0
         show_animated(tiles, true, 1000)
     }
