@@ -1,0 +1,71 @@
+:root {
+  --color: rgb(20, 20, 20);
+  --secondary-color: rgb(46, 50, 54);
+  --accent-color: rgb(0, 0, 0);
+  --gap: 0.5em;
+}
+
+html {
+  background-color: var(--color);
+  box-sizing: border-box;
+
+  font-family: "Courier New", Courier, monospace;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  /* width: 100vw; */
+  /* height: 100vh; */
+  flex-direction: column;
+  gap: 1em;
+}
+
+#game {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: var(--gap);
+
+  border: var(--gap) solid var(--secondary-color);
+  background-color: var(--secondary-color);
+}
+
+.tile {
+  width: 150px;
+  height: 150px;
+
+  color: white;
+  font-size: 1.5em;
+
+  background-color: var(--color);
+  transition: 0.5s ease;
+}
+
+.tile:hover {
+  background-color: var(--accent-color);
+}
+
+.turn-dialog {
+  display: none;
+  color: white;
+  margin: 0;
+}
+
+.button {
+  color: white;
+  font-size: 1.7em;
+  text-decoration: none;
+
+  border-radius: 10px;
+  border: 0.1em solid var(--secondary-color);
+
+  background-color: var(--color);
+
+  padding: 0.3em 1em 0.3em 1em;
+  transition: 0.3s ease-out;
+}
