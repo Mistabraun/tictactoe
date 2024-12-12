@@ -2,7 +2,12 @@
   --color: rgb(20, 20, 20);
   --secondary-color: rgb(46, 50, 54);
   --accent-color: rgb(0, 0, 0);
+
   --gap: 0.5em;
+
+  --font-normal: 1em;
+  --font-medium: 1.5em;
+  --font-large: 1.7em;
 }
 
 html {
@@ -27,8 +32,9 @@ html {
 
 #game {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+
   gap: var(--gap);
 
   border: var(--gap) solid var(--secondary-color);
@@ -40,10 +46,29 @@ html {
   height: 150px;
 
   color: white;
-  font-size: 1.5em;
+  font-size: var(--font-medium);
 
   background-color: var(--color);
   transition: 0.5s ease;
+}
+
+@media (max-width: 600px) and (max-height: 600px) {
+  .tile {
+    width: 70px;
+    height: 70px;
+  }
+
+  .content {
+    gap: 0.5em;
+  }
+
+  :root {
+    --gap: 0.3em;
+
+    --font-normal: 0.5em;
+    --font-medium: 1em;
+    --font-large: 1.3em;
+  }
 }
 
 .tile:hover {
@@ -54,11 +79,12 @@ html {
   display: none;
   color: white;
   margin: 0;
+  font-size: var(--font-medium);
 }
 
 .button {
   color: white;
-  font-size: 1.7em;
+  font-size: var(--font-large);
   text-decoration: none;
 
   border-radius: 10px;
